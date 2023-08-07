@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+        
+        background-image: url("{%static 'images/3.jpg'%}");
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    div{
+        width: 400px;
+        height: 490px;
+        background-color: rgba(0,0,0,0.2);
+        margin: auto;
+        margin-top: 50px;
+       
+    }
+    img{
+        margin-left: 140px;
+        margin-top: 19px;
+        /* position: absolute;
+        top: 17%; */
+        /* border-radius: 50%; */
+    }
+    h4{
+        margin-left: 95px;
+    }
+    /* .photo{
+        position: absolute;
+        top: 17%;
+        border-radius: 50%;
+    } */
+    .heading {
+        width: 400px;
+        height: 60px;
+        background-color: rgb(113, 122, 122);
+    }
+    .heading  h2{
+        margin-left: 100px;
+        padding-top: 14px;
+    }
+    input{
+        margin-top: 400px;
+        margin-left: 10px;
+        border-radius: 5px;
+        width: 90px;
+        background-color: rgba(0,0,0,0.2);
+        color: aliceblue;
+    }
+    button{
+        margin-top: 400px;
+        margin-left: 30px;
+        border-radius: 5px;
+        width: 90px;
+        background-color: rgba(0,0,0,0.2);
+        color: aliceblue;
+    }
+    a{
+        text-decoration: none;
+        color: aliceblue;
+    }
+    </style>
+        
+    
+    <div>
+        <DIV class="heading">
+            <h2>STUDENTS DATA</h2>
+            {% if student.img %}
+            <img src="{{ student.img.url }}" class="img-thumbnail" alt="" style="width: 180px; height: 180px;"><br><br>
+           {% else %}
+            <img src="{% static 'images/gok.png' %}" style="width: 200px;margin-left: 120px;"> 
+           {% endif %}
+        <h4>name:&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  {{student.First_name}}  {{student.Last_name}}</h4>
+        <!-- <h4>LAST NAME:&nbsp;&nbsp;&nbsp;&nbsp; </h4> -->
+        <h4>Number:&nbsp;&nbsp;&nbsp;&nbsp;   {{student.number}}</h4>
+        <h4>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{student.Email}}</h4>
+        <h4>Course:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :{{student.Course.Course_Name}}</h4>
+
+
+    </div>
+    
+    <input type="button" value="BACK" onclick="javascript:history.go(-1)">
+    <button><a
+        href="{% url 'editstudentpage' student.id %}" style="text-decoration: none; color: white; ">edit</a></button>
+        <button><a
+            href="{% url 'delete_student' student.id %}" style="text-decoration: none; color: white; ">delete</a></button>
+    </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+        
+        background-image: url("{%static 'images/3.jpg'%}");
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    div{
+        width: 400px;
+        height: 490px;
+        background-color: rgba(0,0,0,0.2);
+        margin: auto;
+        margin-top: 50px;
+       
+    }
+    img{
+        margin-left: 140px;
+        margin-top: 19px;
+        /* position: absolute;
+        top: 17%; */
+        /* border-radius: 50%; */
+    }
+    h4{
+        margin-left: 95px;
+    }
+    /* .photo{
+        position: absolute;
+        top: 17%;
+        border-radius: 50%;
+    } */
+    .heading {
+        width: 400px;
+        height: 60px;
+        background-color: rgb(113, 122, 122);
+    }
+    .heading  h2{
+        margin-left: 100px;
+        padding-top: 14px;
+    }
+    input{
+        margin-top: 400px;
+        margin-left: 10px;
+        border-radius: 5px;
+        width: 90px;
+        background-color: rgba(0,0,0,0.2);
+        color: aliceblue;
+    }
+    button{
+        margin-top: 400px;
+        margin-left: 60px;
+        border-radius: 5px;
+        width: 90px;
+        background-color: rgba(0,0,0,0.2);
+        color: aliceblue;
+    }
+    a{
+        text-decoration: none;
+        color: aliceblue;
+    }
+    </style>
+        
+    
+    <div>
+        <DIV class="heading">
+            <h2>TEACHER DATA</h2>
+        {% if teacher.img %}
+                <img src="{{ teacher.img.url }}"alt=""
+                class="photo" style="width: 100px;"><br><br>
+                {% else %}
+                <img src="{% static 'images/gok.png' %}"style="width: 160px;"  height="155px">
+        {% endif %}
+
+        <h4>name:&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  {{teacher.user.first_name}} {{teacher.user.last_name}}</h4>
+        <!-- <h4>LAST NAME:&nbsp;&nbsp;&nbsp;&nbsp; </h4> -->
+        <h4>Number:&nbsp;&nbsp;&nbsp;&nbsp; {{teacher.number}}</h4>
+        <h4>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{teacher.user.email}}</h4>
+        <h4>Course:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :{{teacher.Course.Course_Name}}</h4>
+
+
+    </div>
+    <button><a href="{% url 'editpage' teacher.id %}">edit</a></button>
+    <button><a
+     href="{% url 'delete_teacher' teacher.id %}" style="text-decoration: none; color: white; ">delete</a></button><br>
+    <input type="button" value="BACK" onclick="javascript:history.go(-1)">
+</body>
+</html>
+
+
+

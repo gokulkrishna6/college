@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body{
+        
+        background-image: url("{%static 'images/2.jpg'%}");
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    .outer {
+        width: 400px;
+        height: 400px;
+        margin: auto;
+        background-color:rgba(0,0,0,0.2);
+        margin-top: 80px;
+    }
+
+    .heading {
+        width: 400px;
+        height: 60px;
+        background-color: rgb(113, 122, 122);
+    }
+
+    .heading h2 {
+        margin-left: 30%;
+        padding-top: 10px;
+        color: aliceblue;
+    }
+    form{
+        padding-left: 120px;
+        margin-top: 30px;
+
+    }
+    input{
+        margin-top: 15px;
+        border-radius: 5px;
+        border-color:#bfbfbf;
+        background-color: #bfbfbf;
+    }
+    textarea{
+        margin-top: 10px;
+        width: 190px;
+        border-radius: 5px;
+        border-color: antiquewhite;
+    }
+    img{
+        position: absolute;
+        top: 140px;
+        left: 633px;
+    }
+    .submit{
+        width: 190px;
+        background-color: #bfbfbf;
+    }
+</style>
+
+<body>
+    <div class="outer">
+        <DIV class="heading">
+        <h2>UPDATE DATA</h2>
+    </DIV>
+    <form  action="/edit_details/{{teacher.id}}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input name="fname" placeholder="first name" value="{{teacher.user.first_name}}"><br>
+        <input name="lname" placeholder="last name" name="last_name"  value="{{teacher.user.last_name}}"><br>
+        <input name="ph" placeholder="phone number"  value="{{teacher.number}}"><br>
+        <input name="eid" placeholder="email" value="{{teacher.user.email}}"><br>
+        <input type="text"  name="uname" placeholder="enter username" value="{{teacher.user.username}}"><br>
+        <select name="select">
+
+            <option value="{{ teacher.Course.id }}">{{ teacher.Course.Course_Name }}</option>
+
+        </select><br>
+            <input type="file" name="file" accept="image/*" class="form-control"><br>
+        <!-- <input name="address" placeholder="address" value="{{datas.address}}"><br> -->
+        <input type="submit" value="UPDATE">
+        <input type="button" value="BACK" onclick="javascript:history.go(-1)">
+    </form>
+    
+</div>
+</body>
+</html>
